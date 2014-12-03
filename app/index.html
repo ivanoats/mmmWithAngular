@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MMM with Angular!</title>
+</head>
+
+<body>
+  <h2>Welcome to MMM with Angular</h2>
+  <p>Enter your comma seperated nums below</p>
+  <p>Example: 77,42,365,21,13</p>
+
+  <div data-ng-app="mmmApp">
+    <div data-ng-controller="mmmCtrl">
+      <label>Enter your numbers:</label>
+      <br>
+      <input type="text" data-ng-model="mmm.nums" />
+      <button data-ng-click="sendMMM()">Calculate MMM</button>
+      <br>
+      <br>
+      <br>
+      <div data-ng-hide="hiddenMMM">
+        <p>Mean: {{mmm.mean}}</p>
+        <p>Median: {{mmm.median}}</p>
+        <p>Mode: {{mmm.mode}}</p>
+      </div>
+    </div>
+  </div>
+
+<script src="client_bundle.js"></script>
+</body>
+</html>
