@@ -9,7 +9,9 @@
     "beforeEach" : false,
     "after"      : false,
     "afterEach"  : false,
-    "equal"      : false
+    "equal"      : false,
+    "angular"    : false,
+    "expect"     : false
   },
   "jquery": true,
   "globalstrict": true,

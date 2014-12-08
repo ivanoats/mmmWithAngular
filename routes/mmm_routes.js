@@ -1,3 +1,4 @@
+'use strict';
 var mmm = require('../lib/mmm.js');
 
 module.exports = function(app) {
