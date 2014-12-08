@@ -4,7 +4,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
       options: {
-        node: true
+        node: true,
+        jshintrc: true
       },
       src: ['server.js', 'routes/**/*.js', 'app/js/**/*.js', 'test/**/*.js', 'lib/**/*.js']
     },
@@ -17,7 +18,7 @@ module.exports = function(grunt) {
     },
 
     simplemocha: {
-      src: ['test/**/*.js']
+      src: ['test/api/**/*.js']
     },
 
     clean: {
@@ -33,7 +34,7 @@ module.exports = function(grunt) {
       dev: {
         cwd: 'app/',
         expand: true,
-        src: ['**/*.html'],
+        src: ['**/*.html', 'css/**/*.css'],
         dest: 'build/'
       }
     },
@@ -55,8 +56,19 @@ module.exports = function(grunt) {
       }
     },
 
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      },
+      continuous: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS']
+      }
+    }
+
   });
 
-  grunt.registerTask('test', ['clean:testClient', 'jshint', 'jscs', 'simplemocha', 'browserify:test']);
-  grunt.registerTask('build', ['jshint', 'clean', 'browserify:dev', 'copy:dev']);
+  grunt.registerTask('test', ['clean:testClient', 'jshint', 'jscs', 'simplemocha', 'browserify:test', 'karma:unit']);
+  grunt.registerTask('build', ['clean', 'jshint', 'browserify:dev', 'copy:dev']);
 };
